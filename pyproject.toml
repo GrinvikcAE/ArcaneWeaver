@@ -1,4 +1,20 @@
-[project]name = "arcaneweaver"version = "0.0.1"description = "Add your description here"readme = "README.md"requires-python = ">=3.12"dependencies = [    "pydantic>=2.12.3",][dependency-groups]dev = [    "tbump>=6.11.0",][tool.tbump]
+[project]
+name = "arcaneweaver"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.12.3",
+]
+
+[dependency-groups]
+dev = [
+    "tbump>=6.11.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+[tool.tbump]
 # Uncomment this if your project is hosted on GitHub:
 # github_url = "https://github.com/<user or organization>/<project>/"
 
@@ -39,3 +55,17 @@ src = "..."
 #  [[tool.tbump.after_push]]
 #  name = "publish"
 #  cmd = "./publish.sh"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--verbose",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+]
